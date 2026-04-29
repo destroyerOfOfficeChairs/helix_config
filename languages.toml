@@ -14,7 +14,7 @@ soft-wrap.wrap-at-text-width = true
 [[language]]
 name = "typst"
 scope = "source.typst"
-file-types = ["typ"]
+file-types = ["typ", "md"]
 text-width = 80
 rulers = [81]
 soft-wrap.enable = true
