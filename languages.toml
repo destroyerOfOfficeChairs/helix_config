@@ -1,3 +1,7 @@
+[language-server.harper-ls]
+command = "harper-ls"
+args = ["--stdio"]
+
 [[language]]
 name = "text"
 scope = "text.plain"
@@ -15,3 +19,5 @@ text-width = 80
 rulers = [81]
 soft-wrap.enable = true
 soft-wrap.wrap-at-text-width = true
+# Include your standard Typst LSP here alongside Harper so you don't lose Typst features
+language-servers = ["tinymist", "harper-ls"]
