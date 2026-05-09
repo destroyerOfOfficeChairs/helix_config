@@ -21,3 +21,12 @@ soft-wrap.enable = true
 soft-wrap.wrap-at-text-width = true
 # Include your standard Typst LSP here alongside Harper so you don't lose Typst features
 language-servers = ["tinymist", "harper-ls"]
+
+[language-server.tailwindcss-ls]
+command = "tailwindcss-language-server"
+args = ["--stdio"]
+
+[[language]]
+name = "html"
+language-servers = [ "tailwindcss-ls", "vscode-html-language-server" ]
+roots = [".git"]
