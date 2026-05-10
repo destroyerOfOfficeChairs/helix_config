@@ -69,40 +69,6 @@ Check that `tinymist`, `harper-ls`, `tailwindcss-ls`, and `vscode-html-language-
 
 ---
 
-## Workflows & Notes
-
-### Initializing a New Tailwind v4 Workspace
-Because the Tailwind Language Server needs to anchor to a project root and requires local access to the Oxide engine, running `hx` in a bare folder will not load the hover documentation. 
-
-Run this quick setup script in any new project folder to trigger the LSP:
-
-```bash
-# 1. Trigger Helix's workspace detection
-git init
-
-# 2. Give the language server its local compiler brain
-npm init -y
-npm install tailwindcss @tailwindcss/cli
-
-# 3. Create the LSP anchor to wake up the server
-cat << 'EOF' > tailwind.config.js
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    "./templates/**/*.html",
-    "./content/**/*.md"
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-}
-EOF
-
-# 4. Ignore the editor dependencies for clean version control
-echo -e "node_modules/\npackage.json\npackage-lock.json\npublic/" > .gitignore
-```
-
 ### Helix Multi-LSP Quirks
 * **Hover Documentation Priority:** Helix only displays the hover menu (`Space k`) for the *first* server that responds. In `languages.toml`, `tailwindcss-ls` is prioritized over `vscode-html-language-server`. Pressing `Space k` on utility classes will show compiled CSS, but pressing it on standard HTML tags will likely return nothing.
 * **Copying from Hover Menus:** To copy text from the `Space k` popup, hold `Shift` while highlighting with the mouse to temporarily bypass Helix's mouse capture.
